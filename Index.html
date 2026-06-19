@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kennedy Design Studio - Personalización</title>
+    <!-- Importación de iconos FontAwesome para replicar fielmente la imagen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- ESTILOS GENERALES Y BASE DE LA IMAGEN 1000135845.jpg --- */
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Sección de Inicio (Copia fiel del diseño de la imagen) */
+        #inicio-section {
+            display: block;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Detalles estéticos de las esquinas superiores */
+        .dots-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.5;
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #555;
+        }
+
+        .side-quote {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-style: italic;
+            font-family: 'Georgia', serif;
+            font-size: 0.95rem;
+            color: #dfdfdf;
+        }
+
+        .studio-logo {
+            max-width: 280px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .hero-title strong {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        /* Grid de Categorías con Imágenes descriptivas */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .category-card {
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #222;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffffff;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .category-info {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-top: 1px solid #222;
+        }
+
+        /* Botón Principal de Acción "Toca para comenzar" */
+        .btn-start {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0 40px 0;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-start:hover {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Footer de la Imagen (Accesos rápidos) */
+        .image-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: 1px solid #222;
+            padding-top: 25px;
+            margin-top: 20px;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-align: left;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .footer-item:first-child {
+            border-right: 1px solid #222;
+        }
+
+        .footer-item i {
+            font-size: 1.8rem;
+        }
+
+        .footer-item div p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .footer-item div strong {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        /* --- ESTILOS DE LA NUEVA SECCIÓN DE PERSONALIZACIÓN --- */
+        #personalizacion-section {
+            display: none; /* Oculto inicialmente */
+            animation: fadeIn 0.5s ease;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #222;
+            padding-bottom: 15px;
+        }
+
+        .workspace-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        /* Panel de Control (Opciones) */
+        .panel-controls {
+            background: #0a0a0a;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #1a1a1a;
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+
+        .control-group label {
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .select-custom, .input-custom {
+            width: 100%;
+            padding: 12px;
+            background: #151515;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .select-custom:focus, .input-custom:focus {
+            border-color: #fff;
+        }
+
+        /* Opciones de Color en Círculos */
+        .color-picker {
+            display: flex;
+            gap: 12px;
+        }
+
+        .color-option {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.2s;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.active {
+            border-color: #ffffff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Ventana de Visualización en Vivo */
+        .preview-window {
+            background: #0f0f0f;
+            border: 2px dashed #333;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 400px;
+            padding: 20px;
+        }
+
+        .preview-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #222;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            color: #aaa;
+        }
+
+        /* Renderizado dinámico del producto simulado */
+        .product-render {
+            width: 220px;
+            height: 220px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Estilos de orientación controlados por clase CSS via JS */
+        .orientacion-vertical {
+            transform: rotate(0deg);
+        }
+        .orientacion-horizontal {
+            transform: rotate(-90deg); /* Simula visualmente el cambio físico */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .categories-grid { grid-template-columns: repeat(2, 1fr); }
+            .image-footer { grid-template-columns: 1fr; gap: 20px; }
+            .image-footer .footer-item:first-child { border-right: none; border-bottom: 1px solid #222; padding-bottom: 20px; }
+            .workspace-container { grid-template-columns: 1fr; }
+            .side-quote, .dots-pattern { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+
+        <!-- ================= SECCIÓN DE INICIO (MÓDULO DE LA IMAGEN) ================= -->
+        <section id="inicio-section">
+            <!-- Detalles Estéticos -->
+            <div class="dots-pattern">•••••<br>•••••<br>•••••</div>
+            <div class="side-quote">❤️ Cada detalle cuenta una historia.</div>
+
+            <!-- Identidad -->
+            <img src="https://404franciscohernandez-design.github.io/FKennedyDesignStudio/assets/img/logo.png" alt="Kennedy Design Studio" class="studio-logo" onerror="this.src='https://via.placeholder.com/280x100/000000/FFFFFF?text=KENNEDY+DESIGN+STUDIO'">
+            
+            <h1 class="hero-title">
+                Transformamos momentos especiales
+                <strong>en recuerdos inolvidables.</strong>
+            </h1>
+
+            <!-- Grid de Categorías Interactivas -->
+            <div class="categories-grid">
+                <div class="category-card" onclick="irAPersonalizar('tazas')">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400" alt="Regalos">
+                    <div class="category-info">
+                        <i class="fa-solid fa-mug-hot"></i> Regalos
+                    </div>
+                </div>
+                <div class="category-card" onclick="irAPersonalizar('eventos')">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400" alt="Eventos">
+                    <div class="category-info">
+                        <i class="fa-regular fa-calendar-heart"></i> Eventos
+                    </div>
+                </div>
+                <div class="category-card" onclick="irAPersonalizar('stickers')">
+                    <img src="https://images.unsplash.com/photo-1572375995301-45a643143c5a?w=400" alt="Stickers">
+                    <div class="category-info">
+                        <i class="fa-solid fa-tags"></i> Stickers
+                    </div>
+                </div>
+                <div class="category-card" onclick="irAPersonalizar('logotipos')">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400" alt="Negocios">
+                    <div class="category-info">
+                        <i class="fa-solid fa-briefcase"></i> Negocios
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón de Acción Principal -->
+            <button class="btn-start" id="btn-comenzar">
+                <i class="fa-solid fa-hand-pointer"></i> Toca para comenzar
+            </button>
+
+            <!-- Accesos Inferiores de la Imagen -->
+            <div class="image-footer">
+                <div class="footer-item" onclick="alert('Redireccionando al estado y recogida de pedidos...')">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <div>
+                        <strong>Recoge aquí</strong>
+                        <p>tus pedidos</p>
+                    </div>
+                </div>
+                <div class="footer-item" onclick="document.getElementById('input-busqueda').focus(); alert('Haz clic en el buscador para encontrar un artículo.');">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div>
+                        <strong>¿Buscas algo en particular?</strong>
+                        <p>Buscar producto</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECCIÓN DE PERSONALIZACIÓN (NUEVA PÁGINA INTERNA) ================= -->
+        <section id="personalizacion-section">
+            <button class="back-btn" onclick="irAInicio()">
+                <i class="fa-solid fa-arrow-left"></i> Volver al menú principal
+            </button>
+            
+            <h2 class="section-title">Personalización de Producto</h2>
+
+            <div class="workspace-container">
+                <!-- Panel de Configuración -->
+                <div class="panel-controls">
+                    
+                    <!-- 1. Selección de Objeto -->
+                    <div class="control-group">
+                        <label for="select-producto">1. Selecciona el Artículo</label>
+                        <select id="select-producto" class="select-custom" onchange="actualizarSimulador()">
+                            <option value="tazas">Taza Personalizada</option>
+                            <option value="playeras">Playera Sublimada</option>
+                            <option value="logotipos">Logotipo / Identidad Corporativa</option>
+                            <option value="stickers">Stickers Personalizados</option>
+                        </select>
+                    </div>
+
+                    <!-- 2. Selección de Color -->
+                    <div class="control-group">
+                        <label>2. Color Base</label>
+                        <div class="color-picker">
+                            <div class="color-option active" style="background-color: #ffffff;" onclick="cambiarColor('#ffffff', this)"></div>
+                            <div class="color-option" style="background-color: #ff3b30;" onclick="cambiarColor('#ff3b30', this)"></div>
+                            <div class="color-option" style="background-color: #007aff;" onclick="cambiarColor('#007aff', this)"></div>
+                            <div class="color-option" style="background-color: #34c759;" onclick="cambiarColor('#34c759', this)"></div>
+                            <div class="color-option" style="background-color: #111111;" onclick="cambiarColor('#111111', this)"></div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Tamaño -->
+                    <div class="control-group">
+                        <label for="select-tamano">3. Dimensión / Tamaño</label>
+                        <select id="select-tamano" class="select-custom" onchange="actualizarSimulador()">
+                            <option value="estandar">Estándar / Regular</option>
+                            <option value="grande">Grande (XL / 15oz)</option>
+                            <option value="compacto">Compacto / Mini</option>
+                        </select>
+                    </div>
+
+                    <!-- 4. Orientación -->
+                    <div class="control-group">
+                        <label for="select-orientacion">4. Orientación del Diseño</label>
+                        <select id="select-orientacion" class="select-custom" onchange="actualizarSimulador()">
+                            <option value="vertical">Vertical</option>
+                            <option value="horizontal">Horizontal</option>
+                        </select>
+                    </div>
+
+                    <!-- 5. Texto personalizado -->
+                    <div class="control-group">
+                        <label for="input-texto">5. Texto grabado / Leyenda</label>
+                        <input type="text" id="input-texto" class="input-custom" value="Tu Marca" placeholder="Escribe el texto aquí..." oninput="actualizarSimulador()">
+                    </div>
+
+                </div>
+
+                <!-- Ventana de Visualización (Preview Canvas) -->
+                <div class="preview-window">
+                    <div class="preview-badge">Vista Previa en Vivo</div>
+                    
+                    <!-- Objeto Renderizado Controlado dinámicamente -->
+                    <div id="canvas-render" class="product-render orientacion-vertical">
+                        <span id="render-text">Tu Marca</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ================= CONTROLADORES DE INTERACCIÓN (JAVASCRIPT) ================= -->
+    <script>
+        // Elementos de la página de navegación SPA
+        const inicioSec = document.getElementById('inicio-section');
+        const personalizacionSec = document.getElementById('personalizacion-section');
+        const btnComenzar = document.getElementById('btn-comenzar');
+
+        // Elementos del simulador
+        const selectProducto = document.getElementById('select-producto');
+        const selectTamano = document.getElementById('select-tamano');
+        const selectOrientacion = document.getElementById('select-orientacion');
+        const inputTexto = document.getElementById('input-texto');
+        const canvasRender = document.getElementById('canvas-render');
+        const renderText = document.getElementById('render-text');
+
+        // Estado inicial de color seleccionado
+        let colorSeleccionado = "#ffffff";
+
+        // Evento principal: Botón "Toca para comenzar"
+        btnComenzar.addEventListener('click', () => {
+            irAPersonalizar('tazas'); // Por defecto inicia con tazas
+        });
+
+        // Funciones de navegación
+        function irAPersonalizar(categoria) {
+            inicioSec.style.display = 'none';
+            personalizacionSec.style.display = 'block';
+            
+            // Si el usuario presionó una tarjeta de categoría específica, la asignamos en el selector
+            if (categoria) {
+                selectProducto.value = categoria;
+                actualizarSimulador();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function irAInicio() {
+            personalizacionSec.style.display = 'none';
+            inicioSec.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Funciones de Configuración del Producto en Tiempo Real
+        function cambiarColor(colorHex, elemento) {
+            colorSeleccionado = colorHex;
+            
+            // Cambiar clase activa en los círculos de colores
+            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
+            elemento.classList.add('active');
+            
+            actualizarSimulador();
+        }
+
+        function actualizarSimulador() {
+            const producto = selectProducto.value;
+            const tamano = selectTamano.value;
+            const orientacion = selectOrientacion.value;
+            const texto = inputTexto.value;
+
+            // 1. Aplicar Color Base
+            canvasRender.style.backgroundColor = colorSeleccionado;
+            
+            // Contraste de texto automático dependiendo del fondo
+            if (colorSeleccionado === '#111111' || colorSeleccionado === '#007aff' || colorSeleccionado === '#ff3b30') {
+                canvasRender.style.color = '#ffffff';
+            } else {
+                canvasRender.style.color = '#000000';
+            }
+
+            // 2. Aplicar Texto
+            renderText.innerText = texto ? texto : "[Vacío]";
+
+            // 3. Aplicar Cambios por tipo de Objeto (Geometría del contenedor)
+            if (producto === 'tazas') {
+                canvasRender.style.borderRadius = "20px 40px 40px 20px"; // Simula silueta lateral de taza
+            } else if (producto === 'playeras') {
+                canvasRender.style.borderRadius = "8px"; // Silueta cuadrada de estampado
+            } else if (producto === 'logotipos') {
+                canvasRender.style.borderRadius = "50%"; // Formato insignia circular
+            } else if (producto === 'stickers') {
+                canvasRender.style.borderRadius = "15px 5px 15px 5px"; // Troquelado estilizado
+            }
+
+            // 4. Aplicar Escala de Tamaño
+            if (tamano === 'grande') {
+                canvasRender.style.transform = "scale(1.2)";
+            } else if (tamano === 'compacto') {
+                canvasRender.style.transform = "scale(0.85)";
+            } else {
+                canvasRender.style.transform = "scale(1)";
+            }
+
+            // 5. Aplicar Orientación (Ajuste complementario de clases)
+            if (orientacion === 'horizontal') {
+                canvasRender.className = "product-render orientacion-horizontal";
+            } else {
+                canvasRender.className = "product-render orientacion-vertical";
+            }
+        }
+    </script>
+</body>
+</html>
